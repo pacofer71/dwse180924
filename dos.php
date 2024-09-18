@@ -52,7 +52,7 @@
         $valor.=", Valor 2"; //$valor=$valor.", valor2";
         echo "<br>";
         echo $valor;
-        //------------------------------------
+        //------------------------------------ Operador ternario
         $pass="secret0";
         if($pass=="secret0"){
             echo "<br> Login correcto";
@@ -66,11 +66,24 @@
         $num2=100;
         $valor=($operacion=='sur') ? $num1+$num2 : $num1-$num2;
         echo "<br>El valor es $valor"; 
+        //-----------bucle while
+        echo "<hr>";
+        $inicio=0;
+        do{
+            echo "<br>";
+            echo $inicio++;  //$++inicio
+        }while($inicio<100);
+        $inicio=0;
 
-
-
-       
-
+        while($inicio<100){
+            echo "<br>";
+            echo $inicio++;
+        }
+        $num=45;
+        while(true){
+            echo "<br>". $num++;
+            if($num==100) break;
+        }
     ?>
 </body>
 </html>
