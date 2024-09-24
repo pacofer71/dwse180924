@@ -33,3 +33,20 @@ $cadena="PASSWORD,PASSWORD2,PASSWORD3,JUAN";
 $cadenaA=explode(",", $cadena);
 echo "<br>";
 print_r($cadenaA);
+//------compact
+$email1="paco@email.es";
+$nombre1="Paco";
+$edad=12;
+$datos=compact('email1', 'nombre1', 'edad');
+$datos1=compact('lola');
+/*
+
+datos=[
+    'email1'=>'paco@email.es',
+    'nombre1'=>'Paco',
+    'edad'=>12
+]
+datos1=['lola'=>'']
+
+
+*/
