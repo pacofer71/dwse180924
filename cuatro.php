@@ -79,31 +79,31 @@
     //5.- Dados un numero y una cantidad mostraremos una cantidad de numeros
     //multiplos de 7 a partir del numero dado
     //ejmplo si el numero es 8 y la cantidad 4 mostraré 14, 21, 28, 35
-    $num=8;+
-    $cant=4;
-    $cont=1;
+    $num = 8;
+    +$cant = 4;
+    $cont = 1;
     echo "<hr>Los primeros $cant numeros multiplos de 7 a partir de $num son: <br>";
-    for($i=$num;$cont<=$cant ; $i++){
-        if($i%7==0){
+    for ($i = $num; $cont <= $cant; $i++) {
+        if ($i % 7 == 0) {
             echo "$i, ";
             $cont++;
         }
     }
     //6.- Mostrar y contar todos los numeros multiplos de 7 entre dos numeros dados
-    $num1=100;
-    $num2=200;
-    $cont=0;
+    $num1 = 100;
+    $num2 = 200;
+    $cont = 0;
     echo "<hr>Los multiplos de 7 entre $num1 y $num2 son: <br>";
-    for($i=$num1; $i<=$num2; $i++){
+    for ($i = $num1; $i <= $num2; $i++) {
         //if($i%7==0)
-        if(!($i%7)){
+        if (!($i % 7)) {
             echo "$i, ";
             $cont++;
         }
     }
     echo "<br>Hay un total de $cont múltiplos.";
 
-    
+
 
     ?>
 </body>
