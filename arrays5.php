@@ -93,6 +93,63 @@ meteremos en un array de 50x20 y los
 mostraremos en un tabla html de 50 x 20
 */
 // PENSAR EN CASA
+$filas=50;
+$columnas=20;
+$cantidadPrimos=$filas*$columnas; //1000
+$primos=[]; //array de 50 elementos, cada elementop será un array de 20 numeros primos
+$fila=0;
+$candidato=2;
+while($cantidadPrimos>0){
+    $flag=true;
+    for($i=2; $i<$candidato; $i++){
+        if($candidato%$i==0){
+            $flag=false;
+            break;
+        }
+    }
+    if($flag){
+        $cantidadPrimos--;
+        $primos[$fila][]=$candidato;
+        if(count($primos[$fila])==$columnas) $fila++;
+    }
+    $candidato++;
+
+}
+var_dump($primos);
+// $primos es un array de 50 elementos y cada elemento es a su vez un array de 20
+// es decir un array de [50][20]
+echo "<br><table border='1' align='center'>";
+foreach($primos as $value){
+    echo "<tr>";
+    foreach($value as $numero){
+        echo "<td>$numero</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+//---------------------------Otra forma
+echo "<br><table border='1' align='center'>";
+for($i=0; $i<$filas; $i++){
+    echo "<tr>";
+    for($j=0; $j<$columnas; $j++){
+        echo "<td>".$primos[$i][$j]."</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+//
+$numeros=[];
+$numeros[0][]=1;
+$numeros[0][]=2;
+$numeros[1][]=1;
+$numeros[1][]=2;
+$numeros['hola'][23]=67;
+
+
+
+
 
 
 
