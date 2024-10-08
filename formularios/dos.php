@@ -1,20 +1,6 @@
 <?php
-$provincias = [
-    'Almería',
-    'Cadiz',
-    'Córdoba',
-    'Granada',
-    'Huelva',
-    'Jaén',
-    'Málaga',
-    'Sevilla',
-];
-$aficiones = [
-    'Ciclismo',
-    'Cine',
-    'Lectura',
-    'Otras'
-];
+// include, include_once, require, require_once
+require 'utilidades.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,9 +15,7 @@ $aficiones = [
     <title>Document</title>
 </head>
 
-<body>
-
-
+<body class="bg-teal-200">
     <form method="POST" action="action2.php" class="w-96 mx-auto">
         <div class="mb-5">
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
@@ -66,7 +50,7 @@ $aficiones = [
             ?>
         </div>
         <button class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-        <i class="fa-solid fa-floppy-disk mr-2"></i>GUARDAR
+            <i class="fa-solid fa-floppy-disk mr-2"></i>GUARDAR
         </button>
     </form>
 
