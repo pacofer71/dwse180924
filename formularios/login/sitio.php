@@ -31,21 +31,21 @@ $colorFondo = ($_SESSION['perfil']) ?  "#f5b7b1"  : "silver";
     <div class="mt-12 flex p-6 border-4 shadow-xl rounded-xl justify-around">
         <a href="user.php"
             class="px-2 py-1 rounded text-white bg-green-500 hover:bg-green-700 font-bold">
-            Portal Usuarios
+            <i class="fa-solid fa-user mr-2"></i>Portal Usuarios
         </a>
         <?php
-            if($_SESSION['perfil']){
+        if ($_SESSION['perfil']) {
             echo <<< TXT
                 <a href="admin.php"
             class="px-2 py-1 rounded text-white bg-purple-500 hover:bg-purple-700 font-bold">
-            Portal Administrador
+            <i class="fa-solid fa-user-gear mr-2"></i>Portal Administrador
             </a>
             TXT;
-            }
+        }
         ?>
         <a href="cerrar.php"
             class="px-2 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 font-bold">
-            Cerrar Sesión
+            Cerrar Sesión<i class="ml-2 fa-solid fa-right-from-bracket"></i>
         </a>
     </div>
 </body>

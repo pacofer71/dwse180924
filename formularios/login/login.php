@@ -24,7 +24,7 @@ if (isset($_POST['email'])) {
     }
     // Si he llegado hasta aqui por lo menos los campos son correctos
     //Procedemos a validar los usuarios
-    if(validarUsuario($email ,$pass)){
+    if (validarUsuario($email, $pass)) {
         $_SESSION['usuario'] = $email;
         $_SESSION['perfil'] = $usuarios[$email][1];
         header("Location:sitio.php");
@@ -84,4 +84,5 @@ if (isset($_POST['email'])) {
         </div>
     </section>
 </body>
+
 </html>
