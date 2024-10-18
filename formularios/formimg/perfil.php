@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['email'])){
+        header("Location:uno.php");
+        die();
+    }
+    $email=$_SESSION['email'];
+    $imagen=$_SESSION['rutaImagen'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,10 +26,12 @@
 
     <div class="mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
-            <img class="rounded-lg object-cover object-center w-full" src="" alt="" />
+            <img class="rounded-lg object-cover object-center w-full" src="<?php echo $imagen; ?>" alt="" />
         </a>
         <div class="p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">asssxs@erer.rt</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <?php echo $email; ?> 
+            </h5>
         </div>
     </div>
 
