@@ -1,8 +1,7 @@
 {
-    "name": "pacofer71/ejemplo1",
-    "description": "Esto es un ejemplo",
+    "name": "pacofer71/apipelis",
+    "description": "Ejemplo Api Pelis THE MVDB",
     "type": "project",
-    "license": "GPL-2.0-only",
     "autoload": {
         "psr-4": {
             "Src\\": "src/"
@@ -15,6 +14,6 @@
         }
     ],
     "require": {
-        "fakerphp/faker": "^1.23"
+        "guzzlehttp/guzzle": "^7.9"
     }
 }

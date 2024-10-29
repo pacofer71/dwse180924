@@ -1,0 +1,20 @@
+{
+    "name": "pacofer71/ejemplo1",
+    "description": "Esto es un ejemplo",
+    "type": "project",
+    "license": "GPL-2.0-only",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pacofer71",
+            "email": "pacofer71@gmail.com"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.23"
+    }
+}
