@@ -1,6 +1,7 @@
 <?php
 
-use App\Conexion;
+use App\Articulo;
+
 
 require __DIR__."/../vendor/autoload.php";
-Conexion::getConexion();
+var_dump(Articulo::read());

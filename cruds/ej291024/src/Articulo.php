@@ -33,6 +33,22 @@ class Articulo extends Conexion
             parent::cerrarConexion();
         }
     }
+    //------------------------------------------------------------------
+    public static function read():array{
+        $q="select * from articulos order by id desc";
+        $stmt=parent::getConexion()->prepare($q);
+        try {
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            throw new \Exception("Error en read: " . $ex->getMessage(), 1);
+        } finally {
+            parent::cerrarConexion();
+        }
+        //return $stmt->fetchAll(PDO::FETCH_CLASS, Articulo::class);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        //return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
     //Metodos para craer registros en faker
     public static function crearArticulosFaker(int $cant)
     {
