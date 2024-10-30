@@ -36,4 +36,7 @@ class Conexion{
             throw new Exception("Error en la conexion: {$ex->getMessage()}", 1);
         }
     }
+    public static function cerrarConexion(){
+        self::$conexion=null;
+    }
 }
