@@ -20,6 +20,14 @@ class Utils{
         return true;
     }
 
+    public static function existeNombre(string $nombre, ?int $id=null): bool{
+        if(Articulo::existeArticulo($nombre, $id)){
+            $_SESSION['err_nombre']="*** Este nombre ya existe en articulos";
+            return true;
+        }
+        return false;
+    }
+
     public static function pintarError(string $nomError): void{
         if(isset($_SESSION[$nomError])){
             echo "<p class='text-red-700 italic mt-2 text-sm'>{$_SESSION[$nomError]}</p>";

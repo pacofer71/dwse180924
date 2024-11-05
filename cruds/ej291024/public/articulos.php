@@ -13,8 +13,11 @@ $todos = Articulo::read();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articulos</title>
+    <!-- CDN sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CDN tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CDN FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -73,8 +76,8 @@ $todos = Articulo::read();
                     </td>
                     <td class="px-6 py-4 nowrap">
                         <form method="POST" action="borrar.php">
-                            <input type="hidden" name="id" value="304" />
-                            <a href="update.php?id=304"><i class="fas fa-edit text-yellow-700 hover:text-xl"></i></a>
+                            <input type="hidden" name="id" value="{$item->id}" />
+                            <a href="update.php?id={$item->id}"><i class="fas fa-edit text-yellow-700 hover:text-xl"></i></a>
                             <button type="submit" class="ml-2"><i class="fas fa-trash text-red-700 hover:text-xl"></i></button>
                         </form>
                     </td>

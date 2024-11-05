@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Exception;
 use \PDOException;
 use \PDO;
 
@@ -34,6 +35,40 @@ class Articulo extends Conexion
         }
     }
     //------------------------------------------------------------------
+    public function update(int $id){
+        $q="update articulos set nombre=:n, descripcion=:d, precio=:p, stock=:s where id=:i";
+        $stmt = parent::getConexion()->prepare($q);
+        try {
+            $stmt->execute([
+                ':n' => $this->nombre,
+                ':d' => $this->descripcion,
+                ':p' => $this->precio,
+                ':s' => $this->stock,
+                ':i'=>$id
+            ]);
+        } catch (PDOException $ex) {
+            throw new \Exception("Error en create: " . $ex->getMessage(), 1);
+        } finally {
+            parent::cerrarConexion();
+        }
+    }
+    //------------------------------------------------------------------
+    public static function getArticuloById(int $id): bool|Articulo{
+        $q="select * from articulos where id=:i";
+        $stmt = parent::getConexion()->prepare($q);
+        try {
+            $stmt->execute([':i'=>$id]);
+        } catch (PDOException $ex) {
+            throw new \Exception("Error en create: " . $ex->getMessage(), 1);
+        } finally {
+            parent::cerrarConexion();
+        }
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Articulo::class);
+        $articulo = $stmt->fetch();
+        //si no encuentro el articulo devuelve false;
+        return $articulo;
+    }
+    //------------------------------------------------------------------
     public static function read():array{
         $q="select * from articulos order by id desc";
         $stmt=parent::getConexion()->prepare($q);
@@ -49,6 +84,17 @@ class Articulo extends Conexion
         //return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+    public static function delete(int $id){
+        $q="delete from articulos where id=:i";
+        $stmt=parent::getConexion()->prepare($q);
+        try {
+            $stmt->execute([':i'=>$id]);
+        } catch (PDOException $ex) {
+            throw new \Exception("Error en delete: " . $ex->getMessage(), 1);
+        } finally {
+            parent::cerrarConexion();
+        }
+    } 
     //Metodos para craer registros en faker
     public static function crearArticulosFaker(int $cant)
     {
@@ -66,6 +112,25 @@ class Articulo extends Conexion
                 ->crear();
         }
     }
+
+    //metodo para comprobar si el nombre del artículo está duplicado
+    public static function existeArticulo(string $nombre, ?int $id=null ): bool{
+        
+        $q= ($id===null) ? "select count(*) as total from articulos where nombre=:n" :
+        "select count(*) as total from articulos where nombre=:n AND id <>:i";
+        $stmt=parent::getConexion()->prepare($q);
+        try{
+            ($id===null) ? $stmt->execute([':n'=>$nombre]) : $stmt->execute([':n'=>$nombre, ':i'=>$id]) ;
+        }catch(PDOException $ex){
+            throw new \Exception("Error en existeArticulo: " . $ex->getMessage(), 1);
+        }finally{
+            parent::cerrarConexion();
+        }
+        //$filas=$stmt->fetch(PDO::FETCH_OBJ);
+        $filas=$stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        return ($filas['total']>0);
+
+    } 
 
     /**
      * Get the value of id
